@@ -1,0 +1,9 @@
+name: mcp-lab
+topology:
+  nodes:
+    r1:
+      kind: linux
+      image: frrouting/frr
+      cmd: /sbin/tini -- /usr/lib/frr/docker-start
+      binds:
+        - startup.sh:/startup.sh

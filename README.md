@@ -70,8 +70,19 @@ Add the following to your Claude MCP configuration (e.g. `claude_desktop_config.
 {
   "mcpServers": {
     "frr-mcp": {
-      "command": "python",
-      "args": ["/path/to/server.py"]
+      "command": "wsl",
+      "args": [
+        "-e",
+        "bash",
+        "-c",
+        "cd ~/mcp-lab && source venv/bin/activate && python3 server.py"
+      ],
+      "env": {
+        "ROUTER_HOST": "172.20.20.2",
+        "ROUTER_PORT": "22",
+        "ROUTER_USER": "root",
+        "ROUTER_PASS": "admin"
+      }
     }
   }
 }
